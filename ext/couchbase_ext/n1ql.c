@@ -85,8 +85,8 @@ cb_bucket_query(int argc, VALUE *argv, VALUE self)
 	/* Note: Consistency modes. If an invalid mode is passed, the SDK will just ignore it.
 	 * #define LCB_N1P_CONSISTENCY_NONE 0
 	 * #define LCB_N1P_CONSISTENCY_RYOW 1
-     * #define LCB_N1P_CONSISTENCY_REQUEST 2
-     * #define LCB_N1P_CONSISTENCY_STATEMENT 3
+	 * #define LCB_N1P_CONSISTENCY_REQUEST 2
+	 * #define LCB_N1P_CONSISTENCY_STATEMENT 3
 	 * 
 	 */
 	/** Commenting ORGINAL CODE: Adding a extra optional param.
