@@ -1,4 +1,4 @@
-# Couchbase Ruby Client
+# Couchbase Ruby Client  
 
 This is the official client library for use with Couchbase Server. There
 are related libraries available:
