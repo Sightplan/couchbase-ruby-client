@@ -89,7 +89,7 @@ cb_bucket_query(int argc, VALUE *argv, VALUE self)
      * #define LCB_N1P_CONSISTENCY_STATEMENT 3
      * 
      */
-    /** Commenting ORGINAL CODE: Adding a extra optional param.
+    /** Commenting ORIGINAL CODE: Adding an extra optional param.
     rb_scan_args(argc, argv, "1*&", &qstr, &args, &proc); */
     rb_scan_args(argc, argv, "11*&", &qstr, &numConsistency, &args, &proc);    // optional => numConsistency
     if (RTEST(numConsistency))
