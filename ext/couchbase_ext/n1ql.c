@@ -78,20 +78,21 @@ cb_bucket_query(int argc, VALUE *argv, VALUE self)
     VALUE qstr, proc, args;
     VALUE exc, rv;
 
-    /*Vishnu:S:05292020*/
+    /*SP:ENG-15521:S:05292020 --> */
     VALUE numConsistency;    
-    int consistencyMode = 0; // Default: LCB_N1P_CONSISTENCY_NONE
+    int consistencyMode = 0; 
 
-    /* Note: Consistency modes. If an invalid mode is passed, the SDK will just ignore it.
+    /** Commenting ORIGINAL CODE for introducing an extra optional param.
+    rb_scan_args(argc, argv, "1*&", &qstr, &args, &proc); */
+    rb_scan_args(argc, argv, "11*&", &qstr, &numConsistency, &args, &proc);  // optional => numConsistency
+
+    /* Note: Consistency modes (n1ql.h). If an invalid mode is passed, the SDK will just ignore it.
      * #define LCB_N1P_CONSISTENCY_NONE 0
      * #define LCB_N1P_CONSISTENCY_RYOW 1
      * #define LCB_N1P_CONSISTENCY_REQUEST 2
      * #define LCB_N1P_CONSISTENCY_STATEMENT 3
      * 
      */
-    /** Commenting ORIGINAL CODE: Adding an extra optional param.
-    rb_scan_args(argc, argv, "1*&", &qstr, &args, &proc); */
-    rb_scan_args(argc, argv, "11*&", &qstr, &numConsistency, &args, &proc);    // optional => numConsistency
     if (RTEST(numConsistency))
     {
         consistencyMode = NUM2INT(numConsistency);
@@ -108,7 +109,7 @@ cb_bucket_query(int argc, VALUE *argv, VALUE self)
         fflush(stdout);
 #endif
     }
-    /*Vishnu:E:05292020*/
+    /* <-- SP:ENG-15521:E:05292020*/
     
 
     rc = lcb_n1p_setquery(params, RSTRING_PTR(qstr), RSTRING_LEN(qstr), LCB_N1P_QUERY_STATEMENT);
