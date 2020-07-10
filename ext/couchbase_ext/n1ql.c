@@ -152,7 +152,7 @@ cb_query_extract_params_i(VALUE key, VALUE value, VALUE cookie)
             if (TYPE(value) != T_HASH) {
                 lcb_n1p_free(arg->params);
                 rb_raise(cb_eQuery,
-                             "expected value of :named option for N1QL query to be an Array, given type: %d",
+                             "expected value of :named option for N1QL query to be a Hash, given type: %d",
                              (int)TYPE(value));
             }
             rb_hash_foreach(value, cb_query_extract_named_params_i, (VALUE)arg);
